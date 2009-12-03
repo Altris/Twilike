@@ -18,10 +18,10 @@ development:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: twilike_development
+  database: licprosil_ars_golling
   pool: 5
-  username: root
-  password:
+  username: golling
+  password: golling
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -31,18 +31,18 @@ test:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: twilike_test
+  database: licprosil_ars_golling
   pool: 5
-  username: root
-  password:
+  username: golling
+  password: golling
   socket: /var/run/mysqld/mysqld.sock
 
 production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: twilike_production
+  database: licprosil_ars_golling
   pool: 5
-  username: root
-  password: 
+  username: golling
+  password: golling
   socket: /var/run/mysqld/mysqld.sock
