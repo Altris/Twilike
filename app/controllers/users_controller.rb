@@ -18,11 +18,12 @@ class UsersController < ApplicationController
   
   def show
   	@user = User.find params[:id]
-	@messages = @user.messages
+	@messages = @user.messages.find(:all) # @user.messages
+	@message = Message.new
   end
  
   def edit
-    @user = @current_user
+    @user = User.find params[:id]
   end
   
   def update

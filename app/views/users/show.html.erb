@@ -1,8 +1,15 @@
+<% if(@user == current_user) %>
+  <p>
+  <b> It's You </b>
+  </p>
+
+<% end %>
 <p>
   <b>Login:</b>
   <%=h @user.login %>
 </p>
- 
+
+<!--
 <p>
   <b>Login count:</b>
   <%=h @user.login_count %>
@@ -31,7 +38,35 @@
 <p>
   <b>Current login ip:</b>
   <%=h @user.current_login_ip %>
+  </p>
+  -->
+
+<p>
+  <b>Last message :</b>
+  <% @messages.each{|message| %>
+  <li>
+  <%= message.body %>
+    </li>
+    <% } %>
 </p>
- 
- 
 <%= link_to 'Edit', edit_account_path %>
+
+<% if(@user == current_user) %>
+  <h1>New message</h1>
+
+    <% form_for(@message) do |f| %>
+	<%= f.error_messages %>
+
+    <p>
+	<%= f.label :body %><br />
+	<%= f.text_field :body %>
+    </p>
+
+  <% user_id = current_user %>
+
+    <p>
+	<%= f.submit 'Create' %>
+    </p>
+    <% end %>
+
+<% end %>
