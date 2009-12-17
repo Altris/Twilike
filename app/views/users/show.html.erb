@@ -1,8 +1,28 @@
 <% if(@user == current_user) %>
   <p>
   <b> It's You </b>
-  </p>
+</p>
 
+<h1>New message</h1>
+
+<% form_for(@message) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_field :body %>
+  </p>
+  <p>
+    <%= f.label :user_agent %><br />
+    <%= f.text_field :user_agent %>
+  </p>
+ 
+    <% f.label :@user %><br />
+
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
 <% end %>
 <p>
   <b>Login:</b>
@@ -46,9 +66,19 @@
   <% @messages.each{|message| %>
   <li>
   <%= message.body %>
+  <br>
+  <h6>
+  <%= ' Poster le ' %> 
+  <%= message.created_at %>
+  <%= ' avec ' %>
+  <%= message.user_agent %>
+  </h6>
     </li>
     <% } %>
 </p>
+
+<%= will_paginate @messages %>
+
 <%= link_to 'Edit', edit_account_path %>
 
 <% if(@user == current_user) %>
