@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 #  before_filter :require_no_user, :only => [:new, :create]
-#  before_filter :require_user, :only => [:show, :edit, :update]
+#  before_filter :require_user, :only => [:show, :edit, :update
   
   def new
     @user = User.new
@@ -17,8 +17,9 @@ class UsersController < ApplicationController
   end
   
   def show
-  	@user = User.find params[:id]
-	@messages = @user.messages.paginate(:page => params[:page], :per_page => 5, :order => 'created_at DESC')
+  	#@user = User.find params[:id]
+	@user = User.find_by_login(params[:id])
+	@messages = @user.messages.paginate(:page => params[:page], :per_page => 5, :order => 'messages.created_at DESC')
 	@message = Message.new
   end
  
@@ -34,5 +35,12 @@ class UsersController < ApplicationController
     else
       render :action => :edit
     end
+    
   end
+  
+   def index # Rajout pour faire un listing de tous les messages de tous les utilisateurs
+    @messages = Message.paginate(:page => params[:page], :per_page => 5, :order => 'messages.created_at DESC')
+    @message = Message.new
+   end
+
 end

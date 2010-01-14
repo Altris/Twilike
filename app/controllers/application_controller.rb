@@ -46,7 +46,6 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
     end
   
-  
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   

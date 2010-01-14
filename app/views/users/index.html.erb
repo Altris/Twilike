@@ -1,7 +1,6 @@
-<% if(@user == current_user) %>
+<% if current_user.present? %>
   <p>
-  <b> It's
-  <%=h @user.login %> </b>
+  <b> It's <%= current_user.login %> </b>
 </p>
 
 <h1>New message</h1>
@@ -13,12 +12,13 @@
     <%= f.label :body %><br />
     <%= f.text_field :body %>
   </p>
+
 <!--
   <p>
     <%= f.label :user_agent %><br />
-    <%= f.text_field :user_agent %>
-  </p>
- 
+    <%= f.text_field :user_agent %> 
+  </p> 
+
   <p>
     <%= f.label :user_id %><br />
     <%= f.text_field :user_id %>
@@ -31,42 +31,6 @@
 
 <% end %>
 <% end %>
-<p>
-  <b>Login:</b>
-  <%=h @user.login %>
-</p>
-
-<!--
-<p>
-  <b>Login count:</b>
-  <%=h @user.login_count %>
-</p>
- 
-<p>
-  <b>Last request at:</b>
-  <%=h @user.last_request_at %>
-</p>
- 
-<p>
-  <b>Last login at:</b>
-  <%=h @user.last_login_at %>
-</p>
- 
-<p>
-  <b>Current login at:</b>
-  <%=h @user.current_login_at %>
-</p>
- 
-<p>
-  <b>Last login ip:</b>
-  <%=h @user.last_login_ip %>
-</p>
- 
-<p>
-  <b>Current login ip:</b>
-  <%=h @user.current_login_ip %>
-  </p>
-  -->
 
 <p>
   <b>Last message :</b>
@@ -87,5 +51,3 @@
 </p>
 
 <%= will_paginate @messages %>
-
-<%= link_to 'Edit', edit_account_path %>
